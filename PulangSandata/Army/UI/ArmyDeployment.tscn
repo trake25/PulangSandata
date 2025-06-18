@@ -316,6 +316,8 @@ layout_mode = 0
 [connection signal="value_changed" from="SuppliesHBox/WoodSuppliesVBox/WoodSuppliesSlider" to="." method="_on_wood_supplies_slider_value_changed"]
 [connection signal="value_changed" from="SuppliesHBox/WeaponsSuppliesVBox/WeaponsSuppliesSlider" to="." method="_on_weapons_supplies_slider_value_changed"]
 [connection signal="value_changed" from="SuppliesHBox/WealthSuppliesVBox/WealthSuppliesSlider" to="." method="_on_wealth_supplies_slider_value_changed"]
+[connection signal="text_changed" from="ResetConfirmButtons/ArmyName" to="." method="_on_army_name_text_changed"]
+[connection signal="text_submitted" from="ResetConfirmButtons/ArmyName" to="." method="_on_army_name_text_submitted"]
 [connection signal="pressed" from="ResetConfirmButtons/MinDeployCostInfo" to="." method="_on_min_deploy_cost_info_pressed"]
 [connection signal="pressed" from="ResetConfirmButtons/TotalDeployCostInfo" to="." method="_on_total_deploy_cost_info_pressed"]
 [connection signal="pressed" from="ResetConfirmButtons/Deploy" to="." method="_on_deploy_pressed"]

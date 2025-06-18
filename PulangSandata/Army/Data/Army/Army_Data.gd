@@ -22,7 +22,8 @@ var world_stats: Dictionary = {
 }
 
 ## Army Orders
-var world_pc: String = "Idle"  # IDLE, MOVING, GARRISON, DEFEND, CAPTURING, etc.
+var world_status: String = "Idle"  # Idle, Marching, Garrisoned, Defending, Capturing, Battling, etc.
+var world_command: String = "None"  # None, Defend, Capture, Build, Attack, Raid, etc.
 
 ## Carried Supplies
 var supplies := {
@@ -71,7 +72,9 @@ func to_dict() -> Dictionary:
 		"path": path_serialized,
 
 		"world_stats": world_stats,
-		"world_pc": world_pc,
+		"world_status": world_status,
+		"world_command": world_command,
+		
 		"supplies": supplies,
 		"battle_stats": battle_stats,
 		"army_promotions": army_promotions,
@@ -96,7 +99,8 @@ func from_dict(data: Dictionary) -> void:
 		path.append(Vector2(pos[0], pos[1]))
 
 	world_stats = data.get("world_stats", {})
-	world_pc = data.get("world_pc", "IDLE")
+	world_status = data.get("world_status", "Idle")
+	world_command = data.get("world_command", "Defend")
 	supplies = data.get("supplies", {})
 	battle_stats = data.get("battle_stats", {})
 	army_promotions = data.get("army_promotions", [])

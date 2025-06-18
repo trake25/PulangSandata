@@ -23,9 +23,10 @@ func create_army(faction_id: String, army_name: String, deployed_units: Array, t
 	var army = Army_Data.new()
 	army.army_id = str(next_army_id)
 	army.army_faction = faction_id
-	army.army_name = army_name
+	army.army_name = "Army" + str(army.army_id) + " " + army_name
 	army.commander_id = deployed_units[0].unit_id
 	army.location = WorldBuildingManager.player_settlement.world_building_coord
+	army.cur_pos = InputManager.tile_map.map_to_local(army.location)
 	
 
 	# Compute stats based on unit data
@@ -84,6 +85,7 @@ func create_army(faction_id: String, army_name: String, deployed_units: Array, t
 	army.army_promotions = promotions
 
 	all_armies[str(army.army_id)] = army
+	next_army_id += 1
 	save_all_armies()
 	return army
 
@@ -93,6 +95,18 @@ func is_coords_occupied(coords: Vector2i) -> bool:
 			return true
 	return false
 
+func execute_command(army_key: String) -> void:
+	var command = all_armies[army_key].world_command
+	match command:
+		"Capture":
+			army_capture_tile(army_key)
+
+func army_capture_tile(army_key: String) -> void:
+	var raw_coords = InputManager.selected_coord
+	if set_army_path(army_key, raw_coords):
+		for child in Initializer.army_renderer.get_children():
+			child.change_state("Marching")
+	
 
 func get_army(army_id: String) -> Army_Data:
 	return all_armies.get(army_id, null)

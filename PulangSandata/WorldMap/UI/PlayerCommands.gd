@@ -5,6 +5,7 @@ extends Control
 @onready var tile_commands : Control
 @onready var player_settlement : Control
 @onready var army_deployment : Control
+@onready var army_selection : Control
 
 
 # === Player Home Coord ===
@@ -22,6 +23,7 @@ func initialize() -> void:
 	tile_commands = Initializer.tile_commands
 	player_settlement = %PlayerSettlement
 	army_deployment = Initializer.army_deployment
+	army_selection = Initializer.army_selection
 	print("Player Commands initialized")
 
 
@@ -52,12 +54,20 @@ func _on_deploy_pressed() -> void:
 
 
 func _on_capture_pressed() -> void:
-	var raw_coords = InputManager.selected_coord
-	for army_key in ArmyManager.all_armies.keys():
-		if ArmyManager.set_army_path(army_key, raw_coords):
-			print("Army set to path.")
+	
+	tile_commands.hide_all_tile_commands()
+	InputManager.selection_lock = true
+	InputManager.deselect_tile()
+	army_selection.command_label.text = "Capture"
+	army_selection.populate_army_select()
+	army_selection.visible = true
+	
+	#var raw_coords = InputManager.selected_coord
+	#for army_key in ArmyManager.all_armies.keys():
+	#	if ArmyManager.set_army_path(army_key, raw_coords):
+	#		print("Army set to path.")
 		#else:
 		#	print("Unable to set army path")
 		
-	for child in Initializer.army_renderer.get_children():
-		child.change_state("Marching")
+	#for child in Initializer.army_renderer.get_children():
+	#	child.change_state("Marching")

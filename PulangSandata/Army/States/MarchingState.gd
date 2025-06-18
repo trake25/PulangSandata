@@ -61,8 +61,11 @@ func _on_tile_reached():
 func _finish_march():
 	
 	army.army_data.location = tile_map.local_to_map(army.army_data.cur_pos)
-	print(army.army_data.location)
+	print("Arrived at: ",army.army_data.location)
 	army.army_data.path.clear()
+	if army.army_data.world_command == "Capture":
+		MapDataManager.set_tile_owner(army.army_data.location, army.army_data.army_faction)
+		army.army_data.world_command = "None"
 	army.change_state("Idle")
 
 func on_time_speed_changed(new_speed: float):
@@ -84,3 +87,5 @@ func on_time_speed_changed(new_speed: float):
 	tween = create_tween()
 	tween.tween_property(army, "position", target, duration)
 	tween.tween_callback(Callable(self, "_on_tile_reached"))
+	
+	

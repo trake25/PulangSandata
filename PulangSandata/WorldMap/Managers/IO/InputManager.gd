@@ -69,6 +69,9 @@ func select_tile(coords: Vector2i) -> void:
 	TileMapRenderer.tilemap_highlight.clear()
 	TileMapRenderer.tilemap_highlight.set_cell(coords, 1, Vector2i(0, 0))
 
+func deselect_tile() -> void:
+	TileMapRenderer.tilemap_highlight.clear()
+
 func handle_tile_commands(coords: Vector2i) -> void:
 	tile_commands.hide_all_tile_commands()
 

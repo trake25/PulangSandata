@@ -42,6 +42,7 @@ func _ready() -> void:
 func initialize() -> void:
 	init_slider()
 	info_tip_label = info_tip_panel.get_node("%InfoTipPanelLabel")
+	%ArmyName.max_length = 16
 	print("Army Deployment initialized")
 
 func init_slider() -> void:
@@ -207,7 +208,7 @@ func faction_pay_deployment_cost() -> void:
 
 func deploy_army(army_id: String) -> void:
 	var garrisons = Initializer.player_settlement.player_settlement_data.garrison_units
-	var player_settlement = Initializer.player_settlement
+	#var player_settlement = Initializer.player_settlement
 	for unit in deployed_units:
 		var unit_id = unit.unit_id
 		garrisons.erase(unit_id)
@@ -215,8 +216,7 @@ func deploy_army(army_id: String) -> void:
 		UnitManager.all_units[unit_id].army_id = army_id
 	
 	deployed_units.clear()
-	populate_garrison_units(garrisons)
-	player_settlement.update_settlement_ui()              # still buggy
+	#player_settlement.update_settlement_ui()              # still buggy
 	
 		
 func _on_deploy_pressed() -> void:
@@ -238,6 +238,7 @@ func _on_deploy_pressed() -> void:
 	faction_pay_deployment_cost()
 	
 	var army_name = %ArmyName.placeholder_text
+	print("army_name: ",army_name)
 	var player_faction_id = FactionManager.player_faction_id
 	var army = ArmyManager.create_army(player_faction_id, army_name, deployed_units, total_supplies)
 	
@@ -246,3 +247,19 @@ func _on_deploy_pressed() -> void:
 	
 	_on_close_pressed()
 	
+
+
+func _on_army_name_text_changed(new_text: String) -> void:
+	
+	var regex = RegEx.new()
+	regex.compile("[^a-zA-Z]")  # Regular expression to match non-letter characters
+	var result = regex.search(new_text)
+	if result:  # If the text contains non-letter characters
+		var old_caret_pos = %ArmyName.get_caret_column()  # Save the current caret position
+		%ArmyName.text = regex.sub(new_text, "", true)  # Remove non-letter characters
+		%ArmyName.set_caret_column(old_caret_pos - result.get_string().length())  # Adjust caret position
+
+
+func _on_army_name_text_submitted(new_text: String) -> void:
+	%ArmyName.placeholder_text = new_text
+	%ArmyName.text = ""

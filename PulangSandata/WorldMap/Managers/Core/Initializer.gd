@@ -37,6 +37,7 @@ extends Node
 @onready var armydeployment_isready : bool = false
 @onready var armyrenderer_isready : bool = false
 @onready var astargrid_isready : bool = false
+@onready var armyselection_isready : bool = false
 
 
 
@@ -53,6 +54,7 @@ extends Node
 @onready var army_deployment : Control
 @onready var army_renderer : Node
 @onready var astar_grid : Node
+@onready var army_selection : Control
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,7 +75,8 @@ func _process(_delta: float) -> void:
 			contentmentmanager_isready and tilecommands_isready and
 			playersettlement_isready and unitmanager_isready and
 			armymanager_isready and armydeployment_isready and
-			armyrenderer_isready and astargrid_isready
+			armyrenderer_isready and astargrid_isready and
+			armyselection_isready
 		)
 		if is_everyone_initialized:
 			MapDataManager.initialize()

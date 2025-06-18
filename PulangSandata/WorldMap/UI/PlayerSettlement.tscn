@@ -167,7 +167,7 @@ offset_top = 375.0
 offset_right = 400.0
 offset_bottom = 515.0
 
-[node name="GarrisonLabel2" type="Label" parent="."]
+[node name="GarrisonUnitsLabel" type="Label" parent="."]
 layout_mode = 0
 offset_top = 515.0
 offset_right = 400.0
