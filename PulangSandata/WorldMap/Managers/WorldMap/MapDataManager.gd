@@ -51,6 +51,11 @@ func set_tile(coord: Vector2i, tile_data: Tile_Data) -> void:
 	tile_map_renderer.update_tile(coord)
 	save_map_data()
 
+func set_tile_owner(coords: Vector2i, army_faction) -> void:
+	var tile_data = tile_map[coords]
+	tile_data.owner = army_faction
+	tile_map_renderer.update_tile(coords)
+
 func str_to_vector2i(s: String) -> Vector2i:
 	var regex = RegEx.new()
 	if regex.compile(r"\((-?\d+),\s*(-?\d+)\)") != OK:
@@ -63,3 +68,12 @@ func str_to_vector2i(s: String) -> Vector2i:
 		return Vector2i.ZERO
 
 	return Vector2i(int(result.get_string(1)), int(result.get_string(2)))
+
+func quit_game():
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().quit()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print("💾 Map Data saved on application quit.")
+		save_map_data()

@@ -11,7 +11,7 @@ extends Node2D
 func _ready() -> void:
 	if army_data:
 		army_name_label.text = army_data.army_name
-		army_status = army_data.world_pc
+		army_status = army_data.world_status
 	
 	fsm.set_state(army_status)
 	
@@ -21,13 +21,12 @@ func _process(delta):
 	fsm.update(delta)
 
 func change_state(new_state: String):
-	army_data.world_pc = new_state
+	army_data.world_status = new_state
 	fsm.set_state(new_state)
 	print("Army State change: ",new_state)
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print(position)
 		army_data.cur_pos = position
 		army_data.location = tile_map.local_to_map(position)
 		ArmyManager.save_all_armies()

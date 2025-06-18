@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctbedjcpqbf46"]
+[gd_scene load_steps=19 format=3 uid="uid://ctbedjcpqbf46"]
 
 [ext_resource type="Script" uid="uid://ddkvgknu8y5yx" path="res://PulangSandata/WorldMap/UI/WorldMap.gd" id="1_vi2mx"]
 [ext_resource type="PackedScene" uid="uid://b4ukfgs1mro5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Terrain.tscn" id="2_ilpif"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://clppentrybx15" path="res://PulangSandata/WorldMap/UI/PlayerSettlement.tscn" id="13_1hitu"]
 [ext_resource type="Script" uid="uid://df8rsshfiirjn" path="res://PulangSandata/WorldMap/UI/TileCommands.gd" id="13_vj24f"]
 [ext_resource type="PackedScene" uid="uid://cqsrar8kekt06" path="res://PulangSandata/Army/UI/ArmyDeployment.tscn" id="15_nad3x"]
+[ext_resource type="PackedScene" uid="uid://chmjilbxey7jb" path="res://PulangSandata/Army/UI/ArmySelection.tscn" id="18_x7fll"]
 
 [node name="PulangSandata" type="Node2D"]
 
@@ -336,6 +337,14 @@ offset_top = 46.0
 offset_right = 51.0
 offset_bottom = 46.0
 scale = Vector2(0.75, 0.75)
+
+[node name="ArmySelection" parent="PopUpUI" instance=ExtResource("18_x7fll")]
+unique_name_in_owner = true
+visible = false
+offset_left = 51.0
+offset_top = 46.0
+offset_right = -269.0
+offset_bottom = -134.0
 
 [connection signal="pressed" from="CameraUI/PlayerCommands/PCHomeButton/PlayerHome" to="CameraUI/PlayerCommands" method="_on_player_home_pressed"]
 [connection signal="pressed" from="TileCommands/PlayerSettlementTC/Enter" to="CameraUI/PlayerCommands" method="_on_enter_pressed"]
