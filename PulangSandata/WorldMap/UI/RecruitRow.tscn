@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b64aer2cq0xmw"]
+
+[ext_resource type="Script" uid="uid://bypy3rjh3tqnl" path="res://PulangSandata/WorldMap/UI/RecruitRow.gd" id="1_55og6"]
+
+[node name="RecruitRow" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_55og6")
+
+[node name="RecruitName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoTipButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ℹ️"
+
+[node name="RecruitButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Recruit"
+
+[node name="RecruitProgress" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2

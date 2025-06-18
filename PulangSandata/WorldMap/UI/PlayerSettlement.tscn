@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=3 uid="uid://clppentrybx15"]
+
+[ext_resource type="Script" uid="uid://w1ucajp207df" path="res://PulangSandata/WorldMap/UI/PlayerSettlement.gd" id="1_61p4t"]
+[ext_resource type="PackedScene" uid="uid://detyqf4op2efv" path="res://PulangSandata/WorldMap/UI/UpgradeListContainer.tscn" id="2_b65lo"]
+[ext_resource type="PackedScene" uid="uid://1cft2wqa5r2g" path="res://PulangSandata/WorldMap/UI/InfoTipPanel.tscn" id="3_nvimt"]
+[ext_resource type="PackedScene" uid="uid://cg6miaoeqja2w" path="res://PulangSandata/WorldMap/UI/RecruitListContainer.tscn" id="3_u7quw"]
+[ext_resource type="PackedScene" uid="uid://dqwjr5dsokl7q" path="res://PulangSandata/WorldMap/UI/GarrisonListContainer.tscn" id="5_u7quw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvimt"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="PlayerSettlement" type="Control"]
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_61p4t")
+
+[node name="PlayerSettlement" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[node name="BackSettlementNameCloseButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 50.0
+
+[node name="Back" type="Button" parent="BackSettlementNameCloseButtons"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "🔙"
+
+[node name="SettlementName" type="LineEdit" parent="BackSettlementNameCloseButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+expand_to_text_length = true
+
+[node name="Close" type="Button" parent="BackSettlementNameCloseButtons"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 30
+text = "[❌]"
+
+[node name="SettlementInfoVBox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 300.0
+theme_override_constants/separation = 0
+
+[node name="SettlementInfoLabel" type="Label" parent="SettlementInfoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_nvimt")
+horizontal_alignment = 2
+
+[node name="SettlementInfoCurrent" type="Label" parent="SettlementInfoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(4.13924e-06, 0.634216, 3.85046e-07, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_nvimt")
+horizontal_alignment = 2
+
+[node name="SettlementInfoMaximum" type="Label" parent="SettlementInfoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.99971, 0.175002, 0.127909, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_nvimt")
+
+[node name="TrendsLabel" type="Label" parent="SettlementInfoVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_nvimt")
+horizontal_alignment = 1
+
+[node name="AdjustTaxRateLabel" type="Label" parent="."]
+layout_mode = 0
+offset_top = 300.0
+offset_right = 400.0
+offset_bottom = 325.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "<- 10% Adjust Tax Rate -> 50%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaxRateSlider" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 325.0
+offset_right = 400.0
+offset_bottom = 375.0
+
+[node name="TaxRateHSlider" type="HSlider" parent="TaxRateSlider"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 0.5
+step = 0.1
+value = 0.1
+tick_count = 4
+ticks_on_borders = true
+
+[node name="PlaceHolder" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 50.0
+offset_right = 960.0
+offset_bottom = 100.0
+
+[node name="Label" type="Label" parent="PlaceHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Building Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PlaceHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Recruit Limit: To be Implemented"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeListContainer" parent="." instance=ExtResource("2_b65lo")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 680.0
+offset_bottom = 540.0
+
+[node name="RecruitListContainer" parent="." instance=ExtResource("3_u7quw")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 680.0
+offset_top = 100.0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="GarrisonListContainer" parent="." instance=ExtResource("5_u7quw")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 375.0
+offset_right = 400.0
+offset_bottom = 515.0
+
+[node name="GarrisonLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 515.0
+offset_right = 400.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Garrisoned Units"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoTipPanel" parent="." instance=ExtResource("3_nvimt")]
+unique_name_in_owner = true
+layout_mode = 0
+
+[connection signal="pressed" from="BackSettlementNameCloseButtons/Back" to="." method="_on_back_pressed"]
+[connection signal="editing_toggled" from="BackSettlementNameCloseButtons/SettlementName" to="." method="_on_settlement_name_editing_toggled"]
+[connection signal="text_changed" from="BackSettlementNameCloseButtons/SettlementName" to="." method="_on_settlement_name_text_changed"]
+[connection signal="text_submitted" from="BackSettlementNameCloseButtons/SettlementName" to="." method="_on_settlement_name_text_submitted"]
+[connection signal="pressed" from="BackSettlementNameCloseButtons/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="TaxRateSlider/TaxRateHSlider" to="." method="_on_tax_rate_h_slider_value_changed"]

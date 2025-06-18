@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gs5j865d4lh1"]
+
+[ext_resource type="Script" uid="uid://bdyegircrsfyf" path="res://PulangSandata/WorldMap/Managers/IO/CameraManager.gd" id="1_i6l0y"]
+
+[node name="CameraManager" type="Camera2D"]
+position = Vector2(482, 270)
+limit_smoothed = true
+script = ExtResource("1_i6l0y")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyoyg8obpvf1v"]
+
+[ext_resource type="Texture2D" uid="uid://d0oeaiyrjgqwg" path="res://WorldMap/Assets/Single Tile/TileMap_Buildings/Buildings_camp.png" id="1_y3lr6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3us72"]
+texture = ExtResource("1_y3lr6")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cdk3u"]
+tile_shape = 3
+tile_layout = 1
+tile_offset_axis = 1
+tile_size = Vector2i(256, 128)
+sources/1 = SubResource("TileSetAtlasSource_3us72")
+
+[node name="TileMap_Buildings" type="TileMapLayer"]
+z_index = 2
+tile_set = SubResource("TileSet_cdk3u")

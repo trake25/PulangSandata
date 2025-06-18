@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvsk86oxlkeyi"]
+
+[ext_resource type="Texture2D" uid="uid://got4wg1lvfgg" path="res://WorldMap/Assets/Atlas/Features_forest_atlas.png" id="1_h6017"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32f5e"]
+texture = ExtResource("1_h6017")
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yy8qi"]
+tile_shape = 3
+tile_layout = 1
+tile_offset_axis = 1
+tile_size = Vector2i(256, 128)
+sources/1 = SubResource("TileSetAtlasSource_32f5e")
+
+[node name="TileMap_Features" type="TileMapLayer"]
+z_index = 1
+tile_set = SubResource("TileSet_yy8qi")

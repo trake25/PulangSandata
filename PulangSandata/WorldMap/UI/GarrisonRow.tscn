@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cekoli84x5851"]
+
+[ext_resource type="Script" uid="uid://bcpeer1u8plmh" path="res://PulangSandata/WorldMap/UI/GarrisonRow.gd" id="1_rh8ee"]
+
+[node name="GarrisonRow" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rh8ee")
+
+[node name="GarrisonUnitName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoTip" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ℹ️"
+
+[node name="Disband" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Disband"

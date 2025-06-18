@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buuigd77yfvqr"]
+
+[ext_resource type="Script" uid="uid://bwl2a8jrdieh2" path="res://PulangSandata/Army/Managers/ArmyManager.gd" id="1_pqc3d"]
+
+[node name="ArmyManager" type="Node2D"]
+script = ExtResource("1_pqc3d")

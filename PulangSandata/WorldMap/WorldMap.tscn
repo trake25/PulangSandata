@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg7seb1f5ktme"]
+
+[ext_resource type="Script" uid="uid://ddkvgknu8y5yx" path="res://PulangSandata/WorldMap/UI/WorldMap.gd" id="1_38rf5"]
+[ext_resource type="PackedScene" uid="uid://b4ukfgs1mro5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Terrain.tscn" id="1_trrtw"]
+[ext_resource type="PackedScene" uid="uid://bvsk86oxlkeyi" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Features.tscn" id="2_v7va0"]
+[ext_resource type="PackedScene" uid="uid://cyoyg8obpvf1v" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Buildings.tscn" id="3_742l8"]
+[ext_resource type="PackedScene" uid="uid://nrl00u5nbip5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Ownership.tscn" id="4_742l8"]
+[ext_resource type="PackedScene" uid="uid://qcs7y7okf7jr" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Highlight.tscn" id="5_4kcrf"]
+[ext_resource type="PackedScene" uid="uid://gs5j865d4lh1" path="res://PulangSandata/WorldMap/Managers/IO/CameraManager.tscn" id="9_upahf"]
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource("1_38rf5")
+
+[node name="TileMap_Terrain" parent="." instance=ExtResource("1_trrtw")]
+unique_name_in_owner = true
+
+[node name="TileMap_Features" parent="." instance=ExtResource("2_v7va0")]
+unique_name_in_owner = true
+
+[node name="TileMap_Buildings" parent="." instance=ExtResource("3_742l8")]
+unique_name_in_owner = true
+
+[node name="TileMap_Ownership" parent="." instance=ExtResource("4_742l8")]
+unique_name_in_owner = true
+
+[node name="TileMap_Highlight" parent="." instance=ExtResource("5_4kcrf")]
+unique_name_in_owner = true
+
+[node name="CameraManager" parent="." instance=ExtResource("9_upahf")]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+zoom = Vector2(0.5, 0.5)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7t0s8mv20u2o"]
+
+[ext_resource type="Script" uid="uid://ceow5mwk76go1" path="res://Systems/Time/Managers/SunlightController.gd" id="1_th4ks"]
+
+[node name="SunlightController" type="DirectionalLight2D"]
+script = ExtResource("1_th4ks")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://y6nepxikxld2"]
+
+[ext_resource type="Script" uid="uid://daoggrfm1ee35" path="res://PulangSandata/Systems/Time/TimeManager.gd" id="1_xjts0"]
+[ext_resource type="PackedScene" uid="uid://c7t0s8mv20u2o" path="res://PulangSandata/Systems/Time/Managers/SunlightController.tscn" id="2_y7wct"]
+[ext_resource type="PackedScene" uid="uid://872k1dv2kqqr" path="res://PulangSandata/Systems/Time/Managers/TimeUI.tscn" id="3_hfd1l"]
+
+[node name="TimeSystem" type="Node2D"]
+
+[node name="TimeManager" type="Node2D" parent="."]
+script = ExtResource("1_xjts0")
+sunlight_node_path = NodePath("../SunlightController")
+timeui_node_path = NodePath("../TimeUI")
+
+[node name="SunlightController" parent="." instance=ExtResource("2_y7wct")]
+energy = 0.5
+max_distance = 100.0
+
+[node name="TimeUI" parent="." instance=ExtResource("3_hfd1l")]

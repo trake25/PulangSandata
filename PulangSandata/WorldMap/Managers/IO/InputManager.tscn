@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bco5i5hwh44u5"]
+
+[ext_resource type="Script" uid="uid://boauausxjo7xq" path="res://PulangSandata/WorldMap/Managers/IO/InputManager.gd" id="1_jn3fs"]
+[ext_resource type="Script" uid="uid://casymcg7mo7ep" path="res://PulangSandata/WorldMap/Editor/TerrainEditor.gd" id="2_6lv50"]
+[ext_resource type="Script" uid="uid://dpnyssmyxa2hj" path="res://PulangSandata/WorldMap/Editor/FactionEditor.gd" id="3_e14fj"]
+[ext_resource type="Script" uid="uid://dkufme363jag2" path="res://PulangSandata/WorldMap/Editor/FeatureEditor.gd" id="3_njma7"]
+[ext_resource type="Script" uid="uid://ix243dx6x15j" path="res://PulangSandata/WorldMap/Editor/BuildingEditor.gd" id="5_5ut1f"]
+
+[node name="InputManager" type="Node2D"]
+script = ExtResource("1_jn3fs")
+
+[node name="TerrainEditor" type="Node2D" parent="."]
+script = ExtResource("2_6lv50")
+
+[node name="FeatureEditor" type="Node2D" parent="."]
+script = ExtResource("3_njma7")
+
+[node name="FactionEditor" type="Node2D" parent="."]
+script = ExtResource("3_e14fj")
+
+[node name="BuildingEditor" type="Node2D" parent="."]
+script = ExtResource("5_5ut1f")

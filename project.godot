@@ -1,0 +1,73 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pulang Sandata Main"
+run/main_scene="uid://ctbedjcpqbf46"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Initializer="*res://PulangSandata/WorldMap/Managers/Core/Initializer.gd"
+DataIOManager="*res://PulangSandata/WorldMap/Managers/IO/DataIOManager.tscn"
+TerrainConfig="*res://PulangSandata/WorldMap/Data/Tile/Terrain_Config.gd"
+FeatureConfig="*res://PulangSandata/WorldMap/Data/Tile/Feature_Config.gd"
+BuildingConfig="*res://PulangSandata/WorldMap/Data/Building/Building_Config.gd"
+FactionConfig="*res://PulangSandata/WorldMap/Data/Faction/Faction_Config.gd"
+MapDataManager="*res://PulangSandata/WorldMap/Managers/WorldMap/MapDataManager.tscn"
+FactionManager="*res://PulangSandata/WorldMap/Managers/WorldMap/FactionManager.tscn"
+TileMapRenderer="*res://PulangSandata/WorldMap/UI/TileMapRenderer.tscn"
+InputManager="*res://PulangSandata/WorldMap/Managers/IO/InputManager.tscn"
+TimeController="*res://PulangSandata/Systems/Time/Managers/TimeController.gd"
+WeatherSystem="*res://PulangSandata/Systems/Weather/Weather_System.tscn"
+WorldBuildingManager="*res://PulangSandata/WorldMap/Managers/WorldMap/WorldBuildingManager.tscn"
+ProductionManager="*res://PulangSandata/WorldMap/Managers/Economy/ProductionManager.tscn"
+PopulationManager="*res://PulangSandata/WorldMap/Managers/Economy/PopulationManager.tscn"
+TaxManager="*res://PulangSandata/WorldMap/Managers/Economy/TaxManager.tscn"
+ContentmentManager="*res://PulangSandata/WorldMap/Managers/Economy/ContentmentManager.tscn"
+UnitManager="*res://PulangSandata/Army/Managers/UnitManager.tscn"
+ArmyManager="*res://PulangSandata/Army/Managers/ArmyManager.tscn"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[input]
+
+"Terrain Editor Mode"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"location":0,"echo":false,"script":null)
+]
+}
+"Faction Editor Mode"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
+]
+}
+"Feature Editor Mode"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
+"Building Editor Mode"={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"location":0,"echo":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

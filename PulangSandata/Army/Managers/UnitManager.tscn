@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lirc0pb28qis"]
+
+[ext_resource type="Script" uid="uid://c8t5xn6mw1gxl" path="res://PulangSandata/Army/Managers/UnitManager.gd" id="1_8gdpr"]
+
+[node name="UnitManager" type="Node2D"]
+script = ExtResource("1_8gdpr")

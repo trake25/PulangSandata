@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b51lx41l5fluu"]
+
+[ext_resource type="Script" uid="uid://swejru2y2p2n" path="res://PulangSandata/WorldMap/Managers/WorldMap/MapDataManager.gd" id="1_tl0wy"]
+
+[node name="MapDataManager" type="Node2D"]
+script = ExtResource("1_tl0wy")

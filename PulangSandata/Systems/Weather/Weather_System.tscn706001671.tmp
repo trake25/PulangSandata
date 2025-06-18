@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://8sgnv3unftb"]
+
+[ext_resource type="Script" uid="uid://bdhy6gvub5tpd" path="res://PulangSandata/Systems/Weather/Weather_System.gd" id="1_3e86q"]
+
+[node name="WeatherSystem" type="Node2D"]
+script = ExtResource("1_3e86q")
+
+[connection signal="weather_changed" from="." to="." method="_on_weather_changed"]

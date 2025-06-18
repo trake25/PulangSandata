@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dot46mkhaac55"]
+
+[ext_resource type="Script" uid="uid://bfj6yynkrxcye" path="res://PulangSandata/WorldMap/UI/TileMapRenderer.gd" id="1_38qb4"]
+
+[node name="TileMapRenderer" type="Node2D"]
+script = ExtResource("1_38qb4")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://detyqf4op2efv"]
+
+[node name="UpgradeListContainer" type="ScrollContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeListContainerVBox" type="VBoxContainer" parent="."]
+layout_mode = 2

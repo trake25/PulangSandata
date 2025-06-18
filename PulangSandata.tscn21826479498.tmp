@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctbedjcpqbf46"]
+
+[ext_resource type="Script" uid="uid://ddkvgknu8y5yx" path="res://PulangSandata/WorldMap/UI/WorldMap.gd" id="1_vi2mx"]
+[ext_resource type="PackedScene" uid="uid://b4ukfgs1mro5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Terrain.tscn" id="2_ilpif"]
+[ext_resource type="PackedScene" uid="uid://bvsk86oxlkeyi" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Features.tscn" id="3_otlhu"]
+[ext_resource type="PackedScene" uid="uid://cyoyg8obpvf1v" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Buildings.tscn" id="4_1hitu"]
+[ext_resource type="PackedScene" uid="uid://nrl00u5nbip5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Ownership.tscn" id="5_vj24f"]
+[ext_resource type="PackedScene" uid="uid://qcs7y7okf7jr" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Highlight.tscn" id="6_nad3x"]
+[ext_resource type="PackedScene" uid="uid://gs5j865d4lh1" path="res://PulangSandata/WorldMap/Managers/CameraManager.tscn" id="7_ycya3"]
+[ext_resource type="Script" uid="uid://daoggrfm1ee35" path="res://PulangSandata/Systems/Time/TimeManager.gd" id="8_0xv4f"]
+[ext_resource type="PackedScene" uid="uid://c7t0s8mv20u2o" path="res://PulangSandata/Systems/Time/Managers/SunlightController.tscn" id="9_x7fll"]
+[ext_resource type="PackedScene" uid="uid://872k1dv2kqqr" path="res://PulangSandata/Systems/Time/Managers/TimeUI.tscn" id="10_2cdie"]
+
+[node name="PulangSandata" type="Node2D"]
+
+[node name="WorldMap" type="Node2D" parent="."]
+script = ExtResource("1_vi2mx")
+
+[node name="TileMap_Terrain" parent="WorldMap" instance=ExtResource("2_ilpif")]
+unique_name_in_owner = true
+
+[node name="TileMap_Features" parent="WorldMap" instance=ExtResource("3_otlhu")]
+unique_name_in_owner = true
+
+[node name="TileMap_Buildings" parent="WorldMap" instance=ExtResource("4_1hitu")]
+unique_name_in_owner = true
+
+[node name="TileMap_Ownership" parent="WorldMap" instance=ExtResource("5_vj24f")]
+unique_name_in_owner = true
+
+[node name="TileMap_Highlight" parent="WorldMap" instance=ExtResource("6_nad3x")]
+unique_name_in_owner = true
+
+[node name="CameraManager" parent="WorldMap" instance=ExtResource("7_ycya3")]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+zoom = Vector2(0.5, 0.5)
+
+[node name="UI" type="CanvasLayer" parent="WorldMap/CameraManager"]
+
+[node name="TimeUI" parent="WorldMap/CameraManager/UI" instance=ExtResource("10_2cdie")]
+
+[node name="Control" type="Control" parent="WorldMap/CameraManager/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WorldMap/CameraManager/UI/Control"]
+layout_mode = 0
+offset_top = 500.0
+offset_right = 55.0
+offset_bottom = 540.0
+
+[node name="PlayerCapital" type="Button" parent="WorldMap/CameraManager/UI/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Home"
+
+[node name="PlayerCommand" type="VBoxContainer" parent="WorldMap/CameraManager/UI/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 22.225
+anchor_top = 10.975
+anchor_right = 22.225
+anchor_bottom = 10.975
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 71.0
+offset_bottom = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TileInfo" type="Button" parent="WorldMap/CameraManager/UI/Control/PlayerCommand"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tile Info"
+
+[node name="Capture" type="Button" parent="WorldMap/CameraManager/UI/Control/PlayerCommand"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Capture"
+
+[node name="Ambush" type="Button" parent="WorldMap/CameraManager/UI/Control/PlayerCommand"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ambush"
+
+[node name="TimeSystem" type="Node2D" parent="."]
+
+[node name="TimeManager" type="Node2D" parent="TimeSystem"]
+script = ExtResource("8_0xv4f")
+sunlight_node_path = NodePath("../SunlightController")
+timeui_node_path = NodePath("../../WorldMap/CameraManager/UI/TimeUI")
+
+[node name="SunlightController" parent="TimeSystem" instance=ExtResource("9_x7fll")]
+energy = 0.5
+max_distance = 100.0
+
+[connection signal="pressed" from="WorldMap/CameraManager/UI/Control/HBoxContainer/PlayerCapital" to="WorldMap/CameraManager" method="_on_player_capital_pressed"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx62a5rpijjc1"]
+
+[ext_resource type="Script" uid="uid://dttcig4lh5g26" path="res://PulangSandata/WorldMap/UI/UpgradeRow.gd" id="1_qwuae"]
+
+[node name="UpgradeRow" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qwuae")
+
+[node name="UpgradeName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeLv" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InfoTipButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ℹ️"
+
+[node name="UpgradeButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrade"

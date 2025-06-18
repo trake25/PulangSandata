@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7wsibexlgbdv"]
+
+[ext_resource type="Script" uid="uid://dincoa7hae1ae" path="res://PulangSandata/WorldMap/Managers/Economy/PopulationManager.gd" id="1_qxkl3"]
+
+[node name="PopulationManager" type="Node2D"]
+script = ExtResource("1_qxkl3")

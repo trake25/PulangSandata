@@ -1,0 +1,343 @@
+[gd_scene load_steps=18 format=3 uid="uid://ctbedjcpqbf46"]
+
+[ext_resource type="Script" uid="uid://ddkvgknu8y5yx" path="res://PulangSandata/WorldMap/UI/WorldMap.gd" id="1_vi2mx"]
+[ext_resource type="PackedScene" uid="uid://b4ukfgs1mro5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Terrain.tscn" id="2_ilpif"]
+[ext_resource type="PackedScene" uid="uid://bvsk86oxlkeyi" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Features.tscn" id="3_otlhu"]
+[ext_resource type="PackedScene" uid="uid://cyoyg8obpvf1v" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Buildings.tscn" id="4_1hitu"]
+[ext_resource type="PackedScene" uid="uid://nrl00u5nbip5" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Ownership.tscn" id="5_vj24f"]
+[ext_resource type="PackedScene" uid="uid://qcs7y7okf7jr" path="res://PulangSandata/WorldMap/Tilemaps/TileMap_Highlight.tscn" id="6_nad3x"]
+[ext_resource type="PackedScene" uid="uid://ces2ibbjjsmb7" path="res://PulangSandata/Army/UI/ArmyRenderer.tscn" id="6_ycya3"]
+[ext_resource type="PackedScene" uid="uid://b8njcgclm86pm" path="res://PulangSandata/WorldMap/Managers/WorldMap/AStarGrid.tscn" id="7_0xv4f"]
+[ext_resource type="PackedScene" uid="uid://gs5j865d4lh1" path="res://PulangSandata/WorldMap/Managers/IO/CameraManager.tscn" id="7_ycya3"]
+[ext_resource type="Script" uid="uid://daoggrfm1ee35" path="res://PulangSandata/Systems/Time/TimeManager.gd" id="8_0xv4f"]
+[ext_resource type="Script" uid="uid://cdjobdk4hvcu3" path="res://PulangSandata/WorldMap/UI/PlayerCommands.gd" id="9_ilpif"]
+[ext_resource type="PackedScene" uid="uid://c7t0s8mv20u2o" path="res://PulangSandata/Systems/Time/Managers/SunlightController.tscn" id="9_x7fll"]
+[ext_resource type="PackedScene" uid="uid://872k1dv2kqqr" path="res://PulangSandata/Systems/Time/Managers/TimeUI.tscn" id="10_2cdie"]
+[ext_resource type="Script" uid="uid://rxo3o5m34m52" path="res://PulangSandata/WorldMap/UI/PlayerResources.gd" id="10_otlhu"]
+[ext_resource type="PackedScene" uid="uid://clppentrybx15" path="res://PulangSandata/WorldMap/UI/PlayerSettlement.tscn" id="13_1hitu"]
+[ext_resource type="Script" uid="uid://df8rsshfiirjn" path="res://PulangSandata/WorldMap/UI/TileCommands.gd" id="13_vj24f"]
+[ext_resource type="PackedScene" uid="uid://cqsrar8kekt06" path="res://PulangSandata/Army/UI/ArmyDeployment.tscn" id="15_nad3x"]
+
+[node name="PulangSandata" type="Node2D"]
+
+[node name="WorldMap" type="Node2D" parent="."]
+script = ExtResource("1_vi2mx")
+
+[node name="TileMap_Terrain" parent="WorldMap" instance=ExtResource("2_ilpif")]
+unique_name_in_owner = true
+
+[node name="TileMap_Ownership" parent="WorldMap" instance=ExtResource("5_vj24f")]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="TileMap_Features" parent="WorldMap" instance=ExtResource("3_otlhu")]
+unique_name_in_owner = true
+z_index = 2
+
+[node name="TileMap_Buildings" parent="WorldMap" instance=ExtResource("4_1hitu")]
+unique_name_in_owner = true
+z_index = 3
+
+[node name="TileMap_Highlight" parent="WorldMap" instance=ExtResource("6_nad3x")]
+unique_name_in_owner = true
+
+[node name="AStarGrid" parent="WorldMap" instance=ExtResource("7_0xv4f")]
+
+[node name="ArmyRenderer" parent="WorldMap" instance=ExtResource("6_ycya3")]
+z_index = 5
+
+[node name="CameraManager" parent="WorldMap" instance=ExtResource("7_ycya3")]
+unique_name_in_owner = true
+position = Vector2(480, 270)
+zoom = Vector2(0.5, 0.5)
+
+[node name="TimeSystem" type="Node2D" parent="."]
+
+[node name="TimeManager" type="Node2D" parent="TimeSystem"]
+script = ExtResource("8_0xv4f")
+sunlight_node_path = NodePath("../SunlightController")
+timeui_node_path = NodePath("../../CameraUI/PlayerCommands/TimeUI")
+
+[node name="SunlightController" parent="TimeSystem" instance=ExtResource("9_x7fll")]
+energy = 0.5
+max_distance = 100.0
+
+[node name="CameraUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PlayerResources" type="Control" parent="CameraUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("10_otlhu")
+
+[node name="PlayerResourcesHBox" type="HBoxContainer" parent="CameraUI/PlayerResources"]
+layout_mode = 0
+offset_right = 643.0
+offset_bottom = 29.0
+mouse_filter = 2
+
+[node name="FoodLabel" type="Label" parent="CameraUI/PlayerResources/PlayerResourcesHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Food🌾:  "
+
+[node name="WoodLabel" type="Label" parent="CameraUI/PlayerResources/PlayerResourcesHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Wood🎋: "
+
+[node name="WeaponsLabel" type="Label" parent="CameraUI/PlayerResources/PlayerResourcesHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Weapons⚔️: "
+
+[node name="WealthLabel" type="Label" parent="CameraUI/PlayerResources/PlayerResourcesHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Wealth🟡: "
+
+[node name="PlayerCommands" type="Control" parent="CameraUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 6.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("9_ilpif")
+
+[node name="TimeUI" parent="CameraUI/PlayerCommands" instance=ExtResource("10_2cdie")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="PCHomeButton" type="HBoxContainer" parent="CameraUI/PlayerCommands"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 55.0
+grow_vertical = 0
+
+[node name="PlayerHome" type="Button" parent="CameraUI/PlayerCommands/PCHomeButton"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Home"
+
+[node name="TileCommands" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_vj24f")
+
+[node name="TileInfoHboxT" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = -114.5
+offset_top = -170.0
+offset_right = 122.5
+offset_bottom = -100.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TileOwnerInfo" type="Label" parent="TileCommands/TileInfoHboxT"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "1234567890ABCDEF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TileInfo" type="Label" parent="TileCommands/TileInfoHboxT"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "1234567890ABCDEF"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerSettlementTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 260.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Enter" type="Button" parent="TileCommands/PlayerSettlementTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Enter"
+
+[node name="Deploy" type="Button" parent="TileCommands/PlayerSettlementTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Deploy"
+
+[node name="NeutralAdjacentTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 278.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Capture" type="Button" parent="TileCommands/NeutralAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Capture"
+
+[node name="Ambush" type="Button" parent="TileCommands/NeutralAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ambush"
+
+[node name="NeutralNonAdjacentTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 278.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Outpost" type="Button" parent="TileCommands/NeutralNonAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Outpost"
+
+[node name="Conceal" type="Button" parent="TileCommands/NeutralNonAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Conceal"
+
+[node name="NonPlayerAdjacentTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 278.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Attack" type="Button" parent="TileCommands/NonPlayerAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Attack"
+
+[node name="Ransack" type="Button" parent="TileCommands/NonPlayerAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ransack"
+
+[node name="NonPlayerNonAdjacentTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 278.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Raid" type="Button" parent="TileCommands/NonPlayerNonAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Raid"
+
+[node name="Spy" type="Button" parent="TileCommands/NonPlayerNonAdjacentTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Spy"
+
+[node name="PlayerTileBuildingTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 260.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Enter" type="Button" parent="TileCommands/PlayerTileBuildingTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Enter"
+
+[node name="Defend" type="Button" parent="TileCommands/PlayerTileBuildingTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Defend"
+
+[node name="PlayerTileNoBuildingTC" type="VBoxContainer" parent="TileCommands"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 260.0
+offset_bottom = 60.0
+theme_override_constants/separation = 10
+
+[node name="Build" type="Button" parent="TileCommands/PlayerTileNoBuildingTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Build"
+
+[node name="Defend" type="Button" parent="TileCommands/PlayerTileNoBuildingTC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Defend"
+
+[node name="PopUpUI" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PlayerSettlement" parent="PopUpUI" instance=ExtResource("13_1hitu")]
+unique_name_in_owner = true
+visible = false
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 51.0
+offset_bottom = 46.0
+scale = Vector2(0.75, 0.75)
+
+[node name="ArmyDeployment" parent="PopUpUI" instance=ExtResource("15_nad3x")]
+unique_name_in_owner = true
+visible = false
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 51.0
+offset_bottom = 46.0
+scale = Vector2(0.75, 0.75)
+
+[connection signal="pressed" from="CameraUI/PlayerCommands/PCHomeButton/PlayerHome" to="CameraUI/PlayerCommands" method="_on_player_home_pressed"]
+[connection signal="pressed" from="TileCommands/PlayerSettlementTC/Enter" to="CameraUI/PlayerCommands" method="_on_enter_pressed"]
+[connection signal="pressed" from="TileCommands/PlayerSettlementTC/Deploy" to="CameraUI/PlayerCommands" method="_on_deploy_pressed"]
+[connection signal="pressed" from="TileCommands/NeutralAdjacentTC/Capture" to="CameraUI/PlayerCommands" method="_on_capture_pressed"]

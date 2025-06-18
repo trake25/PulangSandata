@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dek70aewfiwew"]
+
+[ext_resource type="Script" uid="uid://ckyyda4c5ckf5" path="res://PulangSandata/WorldMap/Managers/IO/DataIOManager.gd" id="1_570sh"]
+
+[node name="DataIOManager" type="Node2D"]
+script = ExtResource("1_570sh")

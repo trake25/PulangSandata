@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbmy53p40yifn"]
+
+[ext_resource type="Script" uid="uid://x5117ta7qjnf" path="res://PulangSandata/WorldMap/Managers/WorldMap/FactionManager.gd" id="1_olvnu"]
+
+[node name="FactionManager" type="Node2D"]
+script = ExtResource("1_olvnu")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4hqqssx0211f"]
+
+[ext_resource type="Script" uid="uid://c3qhbcv0cce1k" path="res://PulangSandata/WorldMap/Managers/Economy/TaxManager.gd" id="1_8lw1f"]
+
+[node name="TaxManager" type="Node2D"]
+script = ExtResource("1_8lw1f")

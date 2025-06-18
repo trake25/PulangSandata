@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=3 uid="uid://b50dbym3mqwy7"]
+
+[ext_resource type="Script" uid="uid://b4g6c1nil3jsc" path="res://PulangSandata/Army/Army.gd" id="1_rd08j"]
+[ext_resource type="Texture2D" uid="uid://bswoq3cs4axeq" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-0.PNG" id="2_3nykh"]
+[ext_resource type="Script" uid="uid://cm8k57v8nmdrt" path="res://PulangSandata/Army/States/FSM.gd" id="2_hm1rs"]
+[ext_resource type="Texture2D" uid="uid://js8w3p6ncwjt" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-1.PNG" id="3_hm1rs"]
+[ext_resource type="Texture2D" uid="uid://cnkabakp6cgfa" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-2.PNG" id="4_ea8rk"]
+[ext_resource type="Texture2D" uid="uid://b6dx6gvx5b2g2" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-3.PNG" id="5_xfqbv"]
+[ext_resource type="Texture2D" uid="uid://jeeel6mghgfr" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-4.PNG" id="6_4pcjj"]
+[ext_resource type="Texture2D" uid="uid://h7vhaxrpd2jc" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-5.PNG" id="7_gp7vw"]
+[ext_resource type="Texture2D" uid="uid://cv5c0y7l0dtpa" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-6.PNG" id="8_4slga"]
+[ext_resource type="Texture2D" uid="uid://ba28tqb04ylro" path="res://PulangSandata/Army/Assets/Laborers/Banner/Blue/Blue-banner-7.PNG" id="9_7rdkh"]
+[ext_resource type="Script" uid="uid://ce31ooo4du5qp" path="res://PulangSandata/Army/States/BaseState.gd" id="12_ea8rk"]
+[ext_resource type="Script" uid="uid://brat2u6wep7oj" path="res://PulangSandata/Army/States/MarchingState.gd" id="12_mi25t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4slga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3nykh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hm1rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ea8rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xfqbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4pcjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gp7vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4slga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7rdkh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd08j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3nykh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hm1rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ea8rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xfqbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4pcjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gp7vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4slga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7rdkh")
+}],
+"loop": true,
+"name": &"Marching",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd08j"]
+size = Vector2(96, 96)
+
+[node name="Army" type="Node2D"]
+script = ExtResource("1_rd08j")
+
+[node name="ArmyNameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+clip_contents = true
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = -50.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FSM" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_hm1rs")
+
+[node name="Idle" type="AnimatedSprite2D" parent="FSM"]
+unique_name_in_owner = true
+position = Vector2(32, -64)
+sprite_frames = SubResource("SpriteFrames_4slga")
+animation = &"Idle"
+frame_progress = 0.823258
+script = ExtResource("12_ea8rk")
+metadata/_custom_type_script = "uid://ce31ooo4du5qp"
+
+[node name="Marching" type="AnimatedSprite2D" parent="FSM"]
+unique_name_in_owner = true
+position = Vector2(32, -64)
+sprite_frames = SubResource("SpriteFrames_rd08j")
+animation = &"Marching"
+frame_progress = 0.61834
+script = ExtResource("12_mi25t")
+metadata/_custom_type_script = "uid://ce31ooo4du5qp"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(32, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_rd08j")

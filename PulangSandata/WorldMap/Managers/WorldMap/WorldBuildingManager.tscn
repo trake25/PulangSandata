@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1bphv4knpvw8"]
+
+[ext_resource type="Script" uid="uid://dgou8b7tuje0p" path="res://PulangSandata/WorldMap/Managers/WorldMap/WorldBuildingManager.gd" id="1_toiim"]
+
+[node name="WorldBuildingManager" type="Node2D"]
+script = ExtResource("1_toiim")
